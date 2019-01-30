@@ -60,9 +60,11 @@ extension Int {
 	func findCommonPrimeFactors(with number: Int) -> [Int] {
 		if number == 1 { return [1] }
 		
-		let selfFactors = self.primeFactors()
-		let otherNumberFactors = number.primeFactors()
+		let factorSet1 = Set<Int>(self.primeFactors())
+		let factorSet2 = Set<Int>(number.primeFactors())
 		
+		let newSet = factorSet1.intersection(factorSet2)
 		
+		return newSet.sorted()
 	}
 }

@@ -56,6 +56,12 @@ class Integer_ExtensionTests: XCTestCase {
 		
 		factors = 3.findCommonPrimeFactors(with: 12)
 		XCTAssertEqual(factors, [3])
+		
+		factors = 10.findCommonPrimeFactors(with: 10)
+		XCTAssertEqual(factors, [2, 5])
+		
+		factors = 10.findCommonPrimeFactors(with: 120)
+		XCTAssertEqual(factors, [2, 5])
 	}
 
 }
