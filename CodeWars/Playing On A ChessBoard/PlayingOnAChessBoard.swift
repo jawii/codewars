@@ -93,8 +93,8 @@ func game (_ n: UInt64) -> String {
 
 func simplifyFraction(_ nominator: Int, _ denominator: Int) -> String {
 	
-	let nominatorFactors = nominator.primeFactors()
-	let denominatorFactors = denominator.primeFactors()
+//	let nominatorFactors = nominator.primeFactors()
+//	let denominatorFactors = denominator.primeFactors()
 	
 	
 	

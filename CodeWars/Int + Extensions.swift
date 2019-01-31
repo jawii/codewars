@@ -40,31 +40,4 @@ extension Int {
 			return true
 		}
 	}
-	
-	func primeFactors() -> [Int] {
-		if self.isPrime { return [self] }
-		
-		let primes = getPrimes(upTo: self)
-		
-		var returnValue = [Int]()
-		var copy = self
-		for prime in primes {
-			while copy % prime == 0 {
-				returnValue.append(prime)
-				copy = copy / prime
-			}
-		}
-		return returnValue
-	}
-	
-	func findCommonPrimeFactors(with number: Int) -> [Int] {
-		if number == 1 { return [1] }
-		
-		let factorSet1 = Set<Int>(self.primeFactors())
-		let factorSet2 = Set<Int>(number.primeFactors())
-		
-		let newSet = factorSet1.intersection(factorSet2)
-		
-		return newSet.sorted()
-	}
 }

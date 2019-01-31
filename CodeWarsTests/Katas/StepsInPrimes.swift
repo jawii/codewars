@@ -21,10 +21,10 @@ class StepsInPrimes: XCTestCase {
 
 	func testPrimeGeneration() {
 		// Assert 0
-		XCTAssertTrue(getPrimes(upTo: 0) == [])
-		XCTAssertTrue(getPrimes(upTo: 1) == [])
+		XCTAssertTrue(PrimeFinder.getPrimes(upTo: 0) == [])
+		XCTAssertTrue(PrimeFinder.getPrimes(upTo: 1) == [])
 		
-		XCTAssertTrue(getPrimes(upTo: 10).contains(2))
+		XCTAssertTrue(PrimeFinder.getPrimes(upTo: 10).contains(2))
 	}
 	
 	func testIsPrime() {
