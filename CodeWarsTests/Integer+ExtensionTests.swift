@@ -39,29 +39,44 @@ class Integer_ExtensionTests: XCTestCase {
 		output = PrimeFinder.findPrimeFactors(ofNumber: 5040)
 		XCTAssertEqual(output, [2: 4, 3: 2, 5:1, 7:1])
 	}
-//
-//
-//	// MARK: - Find Common Prime Factors
-//	func test_commonFactors_with_1and1_shouldReturn1() {
-//		var factors = 1.findCommonPrimeFactors(with: 1)
-//		XCTAssertEqual(factors, [1])
-//
-//		factors = 50.findCommonPrimeFactors(with: 1)
-//		XCTAssertEqual(factors, [1])
-//	}
-//
-//	func test_commonFactors_withValues() {
-//		var factors = 4.findCommonPrimeFactors(with: 2)
-//		XCTAssertEqual(factors, [2])
-//
-//		factors = 3.findCommonPrimeFactors(with: 12)
-//		XCTAssertEqual(factors, [3])
-//
-//		factors = 10.findCommonPrimeFactors(with: 10)
-//		XCTAssertEqual(factors, [2, 5])
-//
-//		factors = 10.findCommonPrimeFactors(with: 120)
-//		XCTAssertEqual(factors, [2, 5])
-//	}
+
+
+	// MARK: - Find Common Prime Factors
+	func test_commonFactors_with_1and1_shouldReturnEmptyArray() {
+		var primeFactors = PrimeFinder.findCommonPrimeFactors(withNumber: 1, and: 1)
+		XCTAssertEqual(primeFactors, [:])
+
+		primeFactors = PrimeFinder.findCommonPrimeFactors(withNumber: 50, and: 1)
+		XCTAssertEqual(primeFactors, [:])
+	}
+
+	func test_commonFactors_withValues() {
+		
+		var primeFactors = PrimeFinder.findCommonPrimeFactors(withNumber: 4, and: 2)
+		XCTAssertEqual(primeFactors, [2: 1])
+		
+		primeFactors = PrimeFinder.findCommonPrimeFactors(withNumber: 3, and: 12)
+		XCTAssertEqual(primeFactors, [3: 1])
+
+		primeFactors = PrimeFinder.findCommonPrimeFactors(withNumber: 10, and: 10)
+		XCTAssertEqual(primeFactors, [2: 1, 5: 1])
+		
+		primeFactors = PrimeFinder.findCommonPrimeFactors(withNumber: 120, and: 10)
+		XCTAssertEqual(primeFactors, [2: 1, 5: 1])
+	}
+	
+	func test_convert_FactorsToInt() {
+		var number = PrimeFinder.convertFactorsToInt(withFactors: [2: 1])
+		XCTAssertEqual(number, 2)
+		
+		number = PrimeFinder.convertFactorsToInt(withFactors: [5: 2])
+		XCTAssertEqual(number, 25)
+		
+		number = PrimeFinder.convertFactorsToInt(withFactors: [2: 2, 5: 1, 11: 1])
+		XCTAssertEqual(number, 220)
+		
+		number = PrimeFinder.convertFactorsToInt(withFactors: [2: 5, 9: 4, 11: 2])
+		XCTAssertEqual(number, 25404192)
+	}
 
 }

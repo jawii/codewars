@@ -20,15 +20,20 @@ struct FractionNumber: Equatable {
 		return Double(numerator)/Double(denominator)
 	}
 	
-//	func getSimplifiedFraction() -> FractionNumber {
-//		
-//		let numeratorPrimeFactors = numerator.primeFactors()
-//		let denominatorPrimeFactors = denominator.primeFactors()
-//		
-//		let commonFactors = numerator.findCommonPrimeFactors(with: denominator)
-//		
-//		
-//		return FractionNumber(numerator: 0, denominator: 0)
-//	}
+	func getSimplifiedFraction() -> FractionNumber {
+		
+		var numeratorPrimeFactors = PrimeFinder.findPrimeFactors(ofNumber: numerator)
+		var denominatorPrimeFactors = PrimeFinder.findPrimeFactors(ofNumber: denominator)
+		
+		let commonFactors = PrimeFinder.findCommonPrimeFactors(withNumber: numerator, and: denominator)
+		
+		for (key, value) in commonFactors {
+			numeratorPrimeFactors[key] = numeratorPrimeFactors[key]! - value
+			denominatorPrimeFactors[key] = denominatorPrimeFactors[key]! - value
+		}
+		
+		
+		return FractionNumber(numerator: 0, denominator: 0)
+	}
 
 }

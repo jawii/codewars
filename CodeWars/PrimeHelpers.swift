@@ -55,16 +55,31 @@ class PrimeFinder {
 	}
 	
 	
-	//	func findCommonPrimeFactors(with number: Int) -> [Int:Int] {
-	//		if number == 1 { return [1] }
-	//
-	//		let factorSet1 =
-	//		let factorSet2 = Set<Int>(number.primeFactors())
-	//
-	//		let newSet = factorSet1.intersection(factorSet2)
-	//
-	//		return newSet.sorted()
-	//	}
+	static func findCommonPrimeFactors(withNumber number1: Int, and number2: Int) -> [Int: Int] {
+		
+		let number1PrimeFactors = findPrimeFactors(ofNumber: number1)
+		let number2PrimeFactors = findPrimeFactors(ofNumber: number2)
+		
+		var commonFactors = Dictionary<Int, Int>()
+		
+		for (key, value) in number1PrimeFactors {
+			if number2PrimeFactors.keys.contains(key) {
+				let count = min(number2PrimeFactors[key]!, value)
+				commonFactors[key] = count
+			}
+		}
+		return commonFactors
+	}
+	
+	static func convertFactorsToInt(withFactors factors: [Int: Int]) -> Int {
+		var returnValue = 1
+		for (key, value) in factors {
+			let powBase = Decimal(floatLiteral: Double(key))
+			returnValue *= NSDecimalNumber(decimal: pow(powBase, value)).intValue
+		}
+		
+		return returnValue
+	}
 }
 
 

@@ -47,10 +47,10 @@ class FractionNumberTests: XCTestCase {
 		XCTAssertEqual(fraction.value, nil)
 	}
 	
-//	func test_fraction_simplifyValues() {
-//		var fraction = FractionNumber(numerator: 2, denominator: 4)
-//		var simplified = fraction.getSimplifiedFraction()
-//		var excpectedOutPut = FractionNumber(numerator: 1, denominator: 2)
+	func test_fraction_simplifyValues() {
+		var fraction = FractionNumber(numerator: 2, denominator: 4)
+		var simplified = fraction.getSimplifiedFraction()
+		var excpectedOutPut = FractionNumber(numerator: 1, denominator: 2)
 //		XCTAssertEqual(simplified, excpectedOutPut)
-//	}
+	}
 }
