@@ -14,6 +14,11 @@ class ViewController: NSViewController {
 		super.viewDidLoad()
 		print("Start")
 		// Do any additional setup after loading the view.
+
+		print(game(7))
+//		XCTAssertEqual(game(204), "[20808]")
+//		XCTAssertEqual(game(807), "[651249, 2]")
+//		XCTAssertEqual(game(1808), "[1634432]")
 	}
 
 	override var representedObject: Any? {

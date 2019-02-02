@@ -51,6 +51,39 @@ class FractionNumberTests: XCTestCase {
 		var fraction = FractionNumber(numerator: 2, denominator: 4)
 		var simplified = fraction.getSimplifiedFraction()
 		var excpectedOutPut = FractionNumber(numerator: 1, denominator: 2)
-//		XCTAssertEqual(simplified, excpectedOutPut)
+		XCTAssertEqual(simplified, excpectedOutPut)
+		
+		fraction = FractionNumber(numerator: 3, denominator: 9)
+		simplified = fraction.getSimplifiedFraction()
+		excpectedOutPut = FractionNumber(numerator: 1, denominator: 3)
+		XCTAssertEqual(simplified, excpectedOutPut)
+		
+		fraction = FractionNumber(numerator: 20, denominator: 5)
+		simplified = fraction.getSimplifiedFraction()
+		excpectedOutPut = FractionNumber(numerator: 4, denominator: 1)
+		XCTAssertEqual(simplified, excpectedOutPut)
+	}
+	
+	func test_fractionAdding() {
+		
+		var fraction = FractionNumber(numerator: 1, denominator: 2)
+		var toAdd = FractionNumber(numerator: 1, denominator: 2)
+		var value = fraction.adding(toAdd)
+		XCTAssertEqual(value, FractionNumber(numerator: 1, denominator: 1))
+		
+		fraction = FractionNumber(numerator: 1, denominator: 1)
+		toAdd = FractionNumber(numerator: 1, denominator: 1)
+		value = fraction.adding(toAdd)
+		XCTAssertEqual(value, FractionNumber(numerator: 2, denominator: 1))
+		
+		fraction = FractionNumber(numerator: 1, denominator: 2)
+		toAdd = FractionNumber(numerator: 1, denominator: 3)
+		value = fraction.adding(toAdd)
+		XCTAssertEqual(value, FractionNumber(numerator: 5, denominator: 6))
+		
+		fraction = FractionNumber(numerator: 2, denominator: 4)
+		toAdd = FractionNumber(numerator: 4, denominator: 4)
+		value = fraction.adding(toAdd)
+		XCTAssertEqual(value, FractionNumber(numerator: 3, denominator: 2))
 	}
 }

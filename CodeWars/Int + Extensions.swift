@@ -25,7 +25,6 @@ extension Int {
 	}
 	
 	var isPrime: Bool {
-		print("Asking for number \(self)")
 		switch self {
 		case 0, 1:
 			return false

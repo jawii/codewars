@@ -50,53 +50,55 @@ In Fortran - as in any other language - the returned string is not permitted to 
 
 */
 
+
+
+import Foundation
+
+/// Playing on a chess board
+func game (_ n: UInt64) -> String {
+	var fractions = [FractionNumber]()
+	for i in 0 ... n - 1 {
+		for j in 0 ... n - 1 {
+			fractions.append(ChessFractionGrid.valueFor(row: Int(i), column: Int(j)))
+		}
+	}
+	
+	var outPut = fractions.reduce(FractionNumber(numerator: 0, denominator: 1)) { (result, nextFraction) -> FractionNumber in
+		return result.adding(nextFraction, simplify: true)
+	}
+	
+	outPut = outPut.getSimplifiedFraction()
+
+	if outPut.denominator == 1 {
+		return "[\(outPut.numerator)]"
+	} else {
+		return "[\(outPut.numerator), \(outPut.denominator)]"
+	}
+}
+
+
+struct ChessFractionGrid {
+	static func valueFor(row: Int, column: Int) -> FractionNumber {
+		return FractionNumber(numerator: column + 1, denominator: row + column + 2)
+	}
+}
+
+
 /*
-2 x 2 chessboard
+//////////// 2 x 2 chessboard
 1/3 + 2/4
 1/2 + 2/3
 
-3x3
+
+//////////// 3x3
 1/4 + 2/5 + 3/6
 1/3 + 2/4 + 3/5
 1/2 + 2/3 + 3/4
 
-nominators
-1 2 3
-1 2 3
-1 2 3
 
-denominators
-4 5 6
-3 4 5
-2 3 4
-
-4 x 4
-nominators
-1 2 3
-1 2 3
-1 2 3
-1 2 3
-
-denominators
-4 5 6 7
-3 4 5 6
-2 3 4 5
+//////////// 4 x 4
+1/5 + 2/6 + 3/7 + 4/8
+1/4 + 2/5 + 3/6 + 4/7
+1/3 + 2/4 + 3/5 + 4/6
+1/2 + 2/3 + 3/4 + 4/5
 */
-
-import Foundation
-
-func game (_ n: UInt64) -> String {
-	// your code
-	return ""
-}
-
-
-func simplifyFraction(_ nominator: Int, _ denominator: Int) -> String {
-	
-//	let nominatorFactors = nominator.primeFactors()
-//	let denominatorFactors = denominator.primeFactors()
-	
-	
-	
-	return "[\(nominator),\(denominator)]"
-}

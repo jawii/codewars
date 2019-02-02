@@ -10,6 +10,7 @@ import Foundation
 
 
 var PRIMES = [Int]()
+var PRIMESLOOKUP = [Int: [Int: Int]]()
 
 class PrimeFinder {
 	
@@ -40,6 +41,10 @@ class PrimeFinder {
 	static func findPrimeFactors(ofNumber number: Int) -> [Int: Int] {
 		if number.isPrime { return [number: 1] }
 		
+		if let value = PRIMESLOOKUP[number] {
+			return value
+		}
+		
 		let primes = PrimeFinder.getPrimes(upTo: number)
 		
 		var returnValue = [Int: Int]()
@@ -51,6 +56,9 @@ class PrimeFinder {
 				copy = copy / prime
 			}
 		}
+		
+		PRIMESLOOKUP[number] = returnValue
+		
 		return returnValue
 	}
 	
