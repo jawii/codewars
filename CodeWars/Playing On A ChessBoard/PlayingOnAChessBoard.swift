@@ -62,13 +62,36 @@ func game (_ n: UInt64) -> String {
 			fractions.append(ChessFractionGrid.valueFor(row: Int(i), column: Int(j)))
 		}
 	}
+	var newFractions = [FractionNumber]()
 	
-	var outPut = fractions.reduce(FractionNumber(numerator: 0, denominator: 1)) { (result, nextFraction) -> FractionNumber in
-		return result.adding(nextFraction, simplify: true)
+	var denominatorFractions = [FractionNumber]()
+	for i in 1 ... 2*n {
+		newFractions = []
+		let sameDenominators = fractions.filter { fraction in
+			if fraction.denominator != i {
+				newFractions.append(fraction)
+				return false
+			} else {
+				return true
+			}
+		}
+		fractions = newFractions
+		print("For denominator \(i) the count is \(sameDenominators.count)")
+		denominatorFractions.append(
+			sameDenominators
+				.reduce(FractionNumber(numerator: 0, denominator: Int(i)), { (result, nextFraction) -> FractionNumber in
+			return result.adding(nextFraction, simplify: true)
+		}))
 	}
 	
+	print("-----------\nCreating OutPut")
+	var outPut = denominatorFractions.reduce(FractionNumber(numerator: 0, denominator: 1)) { (result, nextFraction) -> FractionNumber in
+				return result.adding(nextFraction, simplify: true)
+	}
+	print("-----------\nOutPut Created")
 	outPut = outPut.getSimplifiedFraction()
-
+	
+	print("-----------\nReturning")
 	if outPut.denominator == 1 {
 		return "[\(outPut.numerator)]"
 	} else {

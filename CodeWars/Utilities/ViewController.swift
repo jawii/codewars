@@ -15,7 +15,7 @@ class ViewController: NSViewController {
 		print("Start")
 		// Do any additional setup after loading the view.
 
-		print(game(7))
+		print(game(807))
 //		XCTAssertEqual(game(204), "[20808]")
 //		XCTAssertEqual(game(807), "[651249, 2]")
 //		XCTAssertEqual(game(1808), "[1634432]")
