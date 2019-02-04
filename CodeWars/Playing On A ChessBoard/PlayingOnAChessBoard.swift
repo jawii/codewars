@@ -56,46 +56,27 @@ import Foundation
 
 /// Playing on a chess board
 func game (_ n: UInt64) -> String {
-	var fractions = [FractionNumber]()
-	for i in 0 ... n - 1 {
-		for j in 0 ... n - 1 {
-			fractions.append(ChessFractionGrid.valueFor(row: Int(i), column: Int(j)))
-		}
-	}
-	var newFractions = [FractionNumber]()
+	guard n != 0  else { return "[0]" }
+	guard n != 1 else { return "[1,2]" }
+	var fractionsByDenominators: [Int: Int] = [:]
 	
-	var denominatorFractions = [FractionNumber]()
-	for i in 1 ... 2*n {
-		newFractions = []
-		let sameDenominators = fractions.filter { fraction in
-			if fraction.denominator != i {
-				newFractions.append(fraction)
-				return false
+	for i in 0 ... Int(n) - 1 {
+		for j in 0 ... Int(n) - 1 {
+			if let oldValue = fractionsByDenominators[(i + j + 2)] {
+				 fractionsByDenominators[(i + j + 2)] = oldValue + j + 1
 			} else {
-				return true
+				fractionsByDenominators[(i + j + 2)] = j + 1
 			}
 		}
-		fractions = newFractions
-		print("For denominator \(i) the count is \(sameDenominators.count)")
-		denominatorFractions.append(
-			sameDenominators
-				.reduce(FractionNumber(numerator: 0, denominator: Int(i)), { (result, nextFraction) -> FractionNumber in
-			return result.adding(nextFraction, simplify: true)
-		}))
 	}
-	
-	print("-----------\nCreating OutPut")
-	var outPut = denominatorFractions.reduce(FractionNumber(numerator: 0, denominator: 1)) { (result, nextFraction) -> FractionNumber in
-				return result.adding(nextFraction, simplify: true)
+	var wholes = 0
+	fractionsByDenominators.forEach { (key, value) in
+		wholes += value/key
 	}
-	print("-----------\nOutPut Created")
-	outPut = outPut.getSimplifiedFraction()
-	
-	print("-----------\nReturning")
-	if outPut.denominator == 1 {
-		return "[\(outPut.numerator)]"
+	if n % 2 == 0 {
+		return "[\(wholes + Int(n) / 2)]"
 	} else {
-		return "[\(outPut.numerator), \(outPut.denominator)]"
+		return "[\(2*(wholes + Int(n) / 2) + 1), 2]"
 	}
 }
 
@@ -124,4 +105,57 @@ struct ChessFractionGrid {
 1/4 + 2/5 + 3/6 + 4/7
 1/3 + 2/4 + 3/5 + 4/6
 1/2 + 2/3 + 3/4 + 4/5
+*/
+
+/*
+var fractions = [FractionNumber]()
+
+var fractionsByDenominators: [Int: [Int]] = [:]
+
+for i in 0 ... Int(n) - 1 {
+for j in 0 ... Int(n) - 1 {
+//			fractions.append(ChessFractionGrid.valueFor(row: Int(i), column: Int(j)))
+if let oldValue = fractionsByDenominators[(i + j + 2)] {
+fractionsByDenominators[(i + j + 2)] = oldValue + [j + 1]
+} else {
+fractionsByDenominators[(i + j + 2)] = [j + 1]
+}
+
+}
+}
+var newFractions = [FractionNumber]()
+
+var denominatorFractions = [FractionNumber]()
+for i in 1 ... 2*n {
+newFractions = []
+let sameDenominators = fractions.filter { fraction in
+if fraction.denominator != i {
+newFractions.append(fraction)
+return false
+} else {
+return true
+}
+}
+fractions = newFractions
+print("For denominator \(i) the count is \(sameDenominators.count)")
+denominatorFractions.append(
+sameDenominators
+.reduce(FractionNumber(numerator: 0, denominator: Int(i)), { (result, nextFraction) -> FractionNumber in
+return result.adding(nextFraction, simplify: true)
+}))
+}
+
+print("-----------\nCreating OutPut")
+var outPut = denominatorFractions.reduce(FractionNumber(numerator: 0, denominator: 1)) { (result, nextFraction) -> FractionNumber in
+return result.adding(nextFraction, simplify: true)
+}
+print("-----------\nOutPut Created")
+outPut = outPut.getSimplifiedFraction()
+
+print("-----------\nReturning")
+if outPut.denominator == 1 {
+return "[\(outPut.numerator)]"
+} else {
+return "[\(outPut.numerator), \(outPut.denominator)]"
+}
 */

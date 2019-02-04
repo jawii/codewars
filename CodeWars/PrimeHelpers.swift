@@ -33,6 +33,7 @@ class PrimeFinder {
 			}
 		}
 		let primes: [Int] = sieve.enumerated().compactMap { $1 == true ? $0 : nil }
+		// let primes: [Int] = sieve.enumerated().flatMap { $1 == true ? $0 : nil }
 		
 		PRIMES = primes
 		return primes
@@ -84,6 +85,7 @@ class PrimeFinder {
 		for (key, value) in factors {
 			let powBase = Decimal(floatLiteral: Double(key))
 			returnValue *= NSDecimalNumber(decimal: pow(powBase, value)).intValue
+			// returnValue *= Int(pow(Double(key), Double(value)))
 		}
 		
 		return returnValue
