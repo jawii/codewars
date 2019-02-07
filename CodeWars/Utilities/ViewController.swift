@@ -15,7 +15,21 @@ class ViewController: NSViewController {
 		print("Start")
 		// Do any additional setup after loading the view.
 
-		print(game(20))
+		print(game(10))
+		
+//		var value = 0.0
+//		var gridSize = 10
+//		for i in 0 ... gridSize - 1 {
+//			value += getSumOfRow(row: i, andGridWidth: gridSize)
+//		}
+//		print(value)
+		
+		
+		
+		
+		
+		
+		
 //		XCTAssertEqual(game(204), "[20808]")
 //		XCTAssertEqual(game(807), "[651249, 2]")
 //		XCTAssertEqual(game(1808), "[1634432]")

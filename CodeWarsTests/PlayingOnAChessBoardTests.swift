@@ -38,21 +38,26 @@ class PlayingOnAChessBoardTests: XCTestCase {
 		XCTAssertEqual(game(2), "[2]")
 		XCTAssertEqual(game(3), "[9, 2]")
 		XCTAssertEqual(game(4), "[8]")
-
-		XCTAssertEqual(game(204), "[20808]")
-//		XCTAssertEqual(game(807), "[651249, 2]")
-//		XCTAssertEqual(game(1808), "[1634432]")
 	}
 	
 	func test_performance_with204() {
+		XCTAssertEqual(game(204), "[20808]")
 		measure {
 			_ = game(204)
 		}
 	}
 	
 	func test_performance_with807() {
+		XCTAssertEqual(game(807), "[651249, 2]")
 		measure {
 			_ = game(807)
+		}
+	}
+	
+	func test_performance_with1808() {
+		XCTAssertEqual(game(1808), "[1634432]")
+		measure {
+			_ = game(1808)
 		}
 	}
 }
