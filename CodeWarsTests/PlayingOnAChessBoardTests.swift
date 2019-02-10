@@ -10,6 +10,10 @@ import XCTest
 @testable import CodeWars
 
 class PlayingOnAChessBoardTests: XCTestCase {
+	
+	override func setUp() {
+		continueAfterFailure = true
+	}
 
 	
 	func test_game_grid() {
@@ -35,9 +39,26 @@ class PlayingOnAChessBoardTests: XCTestCase {
 	}
 	
 	func test_game_with_2() {
+		XCTAssertEqual(game(1), "[1, 2]")
 		XCTAssertEqual(game(2), "[2]")
 		XCTAssertEqual(game(3), "[9, 2]")
 		XCTAssertEqual(game(4), "[8]")
+		XCTAssertEqual(game(5), "[25, 2]")
+		XCTAssertEqual(game(6), "[18]")
+		XCTAssertEqual(game(7), "[49, 2]")
+		XCTAssertEqual(game(8), "[32]")
+		XCTAssertEqual(game(9), "[81, 2]")
+		XCTAssertEqual(game(10), "[50]")
+		XCTAssertEqual(game(11), "[121, 2]")
+		XCTAssertEqual(game(12), "[72]")
+		
+		// 2 -> 2 =	2 * 1
+		// 4 -> 8 = 4 * 2
+		// 6 -> 18 = 6 * 3
+		// 8 -> 32 = 8 * 4
+		
+		// n = 2 -> n * (n - 1)
+		// n = 4 -> n * (n / 2)
 	}
 	
 	func test_performance_with204() {

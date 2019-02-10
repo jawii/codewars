@@ -14,9 +14,9 @@ class ViewController: NSViewController {
 		super.viewDidLoad()
 		print("Start")
 		// Do any additional setup after loading the view.
-
-		print(game(10))
-		
+		for i in 1 ... 30 {
+			print(game(UInt64(Int(i))))
+		}
 //		var value = 0.0
 //		var gridSize = 10
 //		for i in 0 ... gridSize - 1 {

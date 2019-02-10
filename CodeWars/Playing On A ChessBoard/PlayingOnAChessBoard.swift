@@ -53,23 +53,34 @@ In Fortran - as in any other language - the returned string is not permitted to 
 import Foundation
 
 /// Playing on a chess board
+//func game (_ n: UInt64) -> String {
+//	guard n != 0  else { return "[0]" }
+//	guard n != 1 else { return "[1, 2]" }
+//
+//	var value = 0.0
+//	for i in 0 ... Int(n - 1) {
+//		value += getSumOfColumn(col: i, andGridWidth: Int(n))
+//	}
+//	value = value.rounded(toPlaces: 1)
+//
+//
+//	if n % 2 == 0 {
+//		return "[\(Int(value))]"
+//	} else {
+//		return "[\((Int(value)) * 2 + 1), 2]"
+//	}
+//}
 func game (_ n: UInt64) -> String {
 	guard n != 0  else { return "[0]" }
 	guard n != 1 else { return "[1, 2]" }
-	
-	var value = 0.0
-	for i in 0 ... Int(n - 1) {
-		value += getSumOfColumn(col: i, andGridWidth: Int(n))
-	}
-	value = value.rounded(toPlaces: 1)
-	
+
 	if n % 2 == 0 {
-		return "[\(Int(value))]"
+		let value = Int(n) * Int(n / 2)
+		return "[\(value)]"
 	} else {
-		return "[\((Int(value)) * 2 + 1), 2]"
+		return "[\(Int(n * n)), 2]"
 	}
 }
-
 
 extension Double {
 	func rounded(toPlaces places:Int) -> Double {
@@ -93,7 +104,7 @@ func getSumOfColumn(col: Int, andGridWidth n: Int) -> Double {
 	return returnValue
 }
 
-fileprivate struct ChessFractionGrid {
+struct ChessFractionGrid {
 	static func valueFor(row: Int, column: Int) -> FractionNumber {
 		return FractionNumber(numerator: column + 1, denominator: row + column + 2)
 	}
