@@ -14,6 +14,8 @@
 		5513ACA721FEE12900B00751 /* Integer+ExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5513ACA621FEE12900B00751 /* Integer+ExtensionTests.swift */; };
 		55423D8222015CD700D3903B /* FractionNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55423D8122015CD700D3903B /* FractionNumber.swift */; };
 		55423D8622015D2000D3903B /* FractionNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55423D8522015D2000D3903B /* FractionNumberTests.swift */; };
+		5582F8E622104AF500A84487 /* BestTravel_5 .swift in Sources */ = {isa = PBXBuildFile; fileRef = 5582F8E522104AF500A84487 /* BestTravel_5 .swift */; };
+		5582F8EA22104B3C00A84487 /* BestTravelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5582F8E922104B3C00A84487 /* BestTravelTests.swift */; };
 		55C9B4BD21F980AB00677E6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C9B4BC21F980AB00677E6E /* AppDelegate.swift */; };
 		55C9B4BF21F980AB00677E6E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C9B4BE21F980AB00677E6E /* ViewController.swift */; };
 		55C9B4C121F980AC00677E6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55C9B4C021F980AC00677E6E /* Assets.xcassets */; };
@@ -45,6 +47,8 @@
 		5513ACA621FEE12900B00751 /* Integer+ExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Integer+ExtensionTests.swift"; sourceTree = "<group>"; };
 		55423D8122015CD700D3903B /* FractionNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractionNumber.swift; sourceTree = "<group>"; };
 		55423D8522015D2000D3903B /* FractionNumberTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractionNumberTests.swift; sourceTree = "<group>"; };
+		5582F8E522104AF500A84487 /* BestTravel_5 .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BestTravel_5 .swift"; sourceTree = "<group>"; };
+		5582F8E922104B3C00A84487 /* BestTravelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestTravelTests.swift; sourceTree = "<group>"; };
 		55C9B4B921F980AB00677E6E /* CodeWars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeWars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55C9B4BC21F980AB00677E6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55C9B4BE21F980AB00677E6E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,7 +88,6 @@
 		5513AC8F21FD8F7200B00751 /* Playing On A ChessBoard */ = {
 			isa = PBXGroup;
 			children = (
-				5513AC9021FD8F8200B00751 /* PlayingOnAChessBoard.swift */,
 			);
 			path = "Playing On A ChessBoard";
 			sourceTree = "<group>";
@@ -103,6 +106,7 @@
 		5513ACA221FEE09E00B00751 /* Katas */ = {
 			isa = PBXGroup;
 			children = (
+				5513AC9021FD8F8200B00751 /* PlayingOnAChessBoard.swift */,
 				55C9B58021FC46DE00677E6E /* Write Number in Exanded Form */,
 				55C9B52321FACC9B00677E6E /* Are they the "same" */,
 				55C9B4DA21F980B900677E6E /* StepsInPrimes */,
@@ -113,12 +117,23 @@
 		5513ACA321FEE0E000B00751 /* Katas */ = {
 			isa = PBXGroup;
 			children = (
+				5513AC9221FD8F9400B00751 /* PlayingOnAChessBoardTests.swift */,
 				55C9B4CF21F980AC00677E6E /* CodeWarsTests.swift */,
 				55C9B4DF21F9813000677E6E /* StepsInPrimes.swift */,
 				55C9B52621FACD0B00677E6E /* AreTheyTheSame1Tests.swift */,
 				55C9B58121FC46FD00677E6E /* WriteNumberInExpandedFormTests.swift */,
 			);
 			path = Katas;
+			sourceTree = "<group>";
+		};
+		5582F8E422104AD400A84487 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5513AC9D21FEE05500B00751 /* Int + Extensions.swift */,
+				55423D8122015CD700D3903B /* FractionNumber.swift */,
+				5513AC9F21FEE07200B00751 /* PrimeHelpers.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		55C9B4B021F980AB00677E6E = {
@@ -142,10 +157,9 @@
 		55C9B4BB21F980AB00677E6E /* CodeWars */ = {
 			isa = PBXGroup;
 			children = (
+				5582F8E522104AF500A84487 /* BestTravel_5 .swift */,
+				5582F8E422104AD400A84487 /* Helpers */,
 				5513AC8F21FD8F7200B00751 /* Playing On A ChessBoard */,
-				5513AC9D21FEE05500B00751 /* Int + Extensions.swift */,
-				55423D8122015CD700D3903B /* FractionNumber.swift */,
-				5513AC9F21FEE07200B00751 /* PrimeHelpers.swift */,
 				5513ACA121FEE08F00B00751 /* Utilities */,
 				5513ACA221FEE09E00B00751 /* Katas */,
 				55C9B4C621F980AC00677E6E /* CodeWars.entitlements */,
@@ -157,7 +171,7 @@
 		55C9B4CE21F980AC00677E6E /* CodeWarsTests */ = {
 			isa = PBXGroup;
 			children = (
-				5513AC9221FD8F9400B00751 /* PlayingOnAChessBoardTests.swift */,
+				5582F8E922104B3C00A84487 /* BestTravelTests.swift */,
 				5513ACA321FEE0E000B00751 /* Katas */,
 				55C9B4D121F980AC00677E6E /* Info.plist */,
 				5513ACA621FEE12900B00751 /* Integer+ExtensionTests.swift */,
@@ -297,6 +311,7 @@
 				5513AC9121FD8F8200B00751 /* PlayingOnAChessBoard.swift in Sources */,
 				55C9B52521FACCF300677E6E /* AreTheyTheSame1.swift in Sources */,
 				5513ACA021FEE07200B00751 /* PrimeHelpers.swift in Sources */,
+				5582F8E622104AF500A84487 /* BestTravel_5 .swift in Sources */,
 				55C9B4DC21F980C600677E6E /* StepsInPrimes.swift in Sources */,
 				55423D8222015CD700D3903B /* FractionNumber.swift in Sources */,
 				5513AC9E21FEE05500B00751 /* Int + Extensions.swift in Sources */,
@@ -314,6 +329,7 @@
 				5513ACA721FEE12900B00751 /* Integer+ExtensionTests.swift in Sources */,
 				5513AC9321FD8F9400B00751 /* PlayingOnAChessBoardTests.swift in Sources */,
 				55C9B4D021F980AC00677E6E /* CodeWarsTests.swift in Sources */,
+				5582F8EA22104B3C00A84487 /* BestTravelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
