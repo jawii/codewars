@@ -53,13 +53,46 @@ class BestTravelTests: XCTestCase {
 		XCTAssertEqual(outPut, -1)
 	}
 	
-	func test_bestSum_withVariousValues() {
+	func test_bestSum_withValuesCase1() {
 		let t = 3
 		let k = 2
 		let ls = [1, 1, 2]
 		let outPut = chooseBestSum(t, k, ls)
 		XCTAssertEqual(outPut, 3)
 	}
+	
+	func test_bestSum_withValuesCase2() {
+		let t = 4
+		let k = 2
+		let ls = [1, 1, 2, 2]
+		let outPut = chooseBestSum(t, k, ls)
+		XCTAssertEqual(outPut, 4)
+	}
+	
+	func test_bestSum_withValuesCase3() {
+		let t = 6
+		let k = 2
+		let ls = [1, 1, 2, 4]
+		let outPut = chooseBestSum(t, k, ls)
+		XCTAssertEqual(outPut, 6)
+	}
+	
+	func test_bestSum_withValuesCase4() {
+		let t = 6
+		let k = 2
+		let ls = [1, 1, 2, 2]
+		let outPut = chooseBestSum(t, k, ls)
+		XCTAssertEqual(outPut, 4)
+	}
+	
+	func test_bestSum_withValuesCase5() {
+		let t = 10
+		let k = 3
+		let ls = [1, 1, 2, 2, 4, 5]
+		let outPut = chooseBestSum(t, k, ls)
+		XCTAssertEqual(outPut, 10)
+	}
+	
 
 
 }

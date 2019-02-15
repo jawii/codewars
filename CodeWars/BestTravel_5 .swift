@@ -54,16 +54,35 @@ func chooseBestSum(_ t: Int, _ k: Int, _ ls: [Int]) -> Int {
 	if ls.count <= k { return -1 }
 	
 	// If list has only greater numbers than t, return - 1
-	if (ls.filter { $0 <= t}).isEmpty {
+	if (ls.filter { $0 <= t }).isEmpty {
 		return -1
 	}
 	
-
-	// Remove all over k and sort the list
-	var list = ls.filter { $0 <= t }.sorted()
-
+	// Remove all over t
+	var list = ls.filter { $0 <= t }
 	
+	// keep sum
+	var sum = 0
+	var selectionsCount = 0
 	
-	return 1
+	while selectionsCount <= k && !list.isEmpty {
+		// Find smallest item and substract that from eveyone else
+		let smallest = list.min()!
+		sum += smallest
+		list = ls.map { $0 - smallest }.filter { $0 > 0 }
+		
+		// Check if you get exact match
+		for item in list {
+			if sum + item + smallest == t && selectionsCount == k - 2 {
+				return t
+			}
+		}
+		selectionsCount += 1
+	}
+	
+	sum += list.min()!
+	selectionsCount += 1
+	
+	return sum
 }
 
