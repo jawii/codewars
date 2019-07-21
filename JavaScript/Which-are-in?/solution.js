@@ -12,4 +12,9 @@ a2 = ["lively", "alive", "harp", "sharp", "armstrong"]
 returns []
 */
 
-console.log("Testing");
+console.log("hello");
+
+exports.inArray = function(array1, array2) {
+
+    return []
+}
