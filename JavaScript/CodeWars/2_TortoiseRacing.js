@@ -43,5 +43,5 @@ exports.race = function(v1, v2, g) {
   const seconds = Math.round(60 * (exactMinutes - minutes));
 
   console.log(hours, minutes, seconds);
-  return [hours, minutes, seconds];
+  return [hours, minutes, +seconds];
 };
