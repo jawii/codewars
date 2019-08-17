@@ -37,11 +37,10 @@ exports.race = function(v1, v2, g) {
   const hours = Math.floor(timeInHours);
 
   // How many minutes. Store the unrounded value
-  const exactMinutes = 60 * (timeInHours - hours);
-  const minutes = Math.round(exactMinutes);
+  const exactMinutes = Math.round(10000 * 60 * (timeInHours - hours)) / 10000;
+  const minutes = Math.floor(exactMinutes);
 
-  const seconds = Math.round(60 * (exactMinutes - minutes));
+  const seconds = Math.floor(60 * (exactMinutes - minutes));
 
-  console.log(hours, minutes, seconds);
-  return [hours, minutes, +seconds];
+  return [hours, minutes, seconds];
 };
