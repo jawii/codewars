@@ -22,52 +22,44 @@ from encrypted strings.
 */
 
 exports.decrypt = str => {
-  // Capture digits and spaces
-  let words = str.split(" ");
-  console.log("Words: ", words);
+  var decrypt = "";
+  var foundNextCharcode = false;
+  var skipTo = -1;
 
-  // Separate Numbers and words
-  let numbersAndWords = words.map(word => {
-    return word.split("'");
-  });
+  for (var i = 0; i < str.length; i++) {
+    if (i < skipTo) continue;
+    var currentCharacter = str[i];
+    console.log("Current character: ", currentCharacter);
 
-  var decrypt = numbersAndWords.reverse().map(word1 => {
-    console.log("Word: ", word1);
-    const word = word1.reverse();
-    var decryptedWord = "";
-
-    for (var i = 0; i < word.length; i++) {
-      let currentChar = word[i];
-
-      if (currentChar == "") continue;
-
-      if (word[i + 1] != "") {
-        decryptedWord += currentChar;
-      } else {
-        let str = String.fromCharCode(Number(currentChar));
-        decryptedWord += str;
-      }
+    // if number, append it
+    if (!isNaN(currentCharacter)) {
+      decrypt += currentCharacter;
+      continue;
     }
-    return decryptedWord;
-  });
+
+    // if space, append it
+    if (currentCharacter == " ") {
+      decrypt += currentCharacter;
+      continue;
+    }
+
+    // now it's '
+    // find where next ' is
+    let nextMark = str.slice(i + 1).indexOf("'");
+    console.log("Next: ", nextMark);
+
+    // separate number it [i + 1] -> [index]
+    let number = str.slice(i + 1).slice(0, nextMark);
+    number = Number(number);
+
+    decrypt += String.fromCharCode(number);
+    skipTo = nextMark + i + 2;
+  }
 
   console.log(decrypt);
 
-  // Replace every letter with ASCII code
-
-  // Reverse
-
-  /*
-  let arr = str
-    .split("'")
-    .filter(str => str !== "")
-    .map(str => str.split(" "));
-  var merged = [].concat.apply([], arr);
-  // split spaces
-  return merged
-    .map(str => Number(str))
-    .map(charcode => String.fromCharCode(charcode))
+  return decrypt
+    .split("")
     .reverse()
     .join("");
-    */
 };
